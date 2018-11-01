@@ -9,27 +9,29 @@ public class PrimeNumApp {
 		Scanner scnr = new Scanner(System.in);
 		ArrayList<Integer> primeNums = new ArrayList<>();
 		String userChoice = null;
-		
-		System.out.println("Hello! Welcome to the 'Totally Cool...No Really...Learning is Cool' prime number generator!!");
+
+		System.out.println(
+				"Hello! Welcome to the 'Totally Cool...No Really...Learning is Cool' prime number generator!!");
 		System.out.println();
 		System.out.println("Let's find some prime numbers!");
 		System.out.println();
 
-		int primeArray = Validator.getInt(scnr, "How many numbers would you like to search?(Let's keep it under 10000 ok? Don't get greedy): ", 2, 10000);
-		
-		
-		primeNums.addAll(PrimeNums.getPrimes(primeArray));
-		
-		do {
-		System.out.println("Enter the number you'd like to see: ");
-		int userPrime = scnr.nextInt();
-		int temp = primeNums.get(userPrime);
-		System.out.println("The number " + userPrime + " prime is " + temp + "\n");
-		System.out.println("Would you lke to find another prime number? (y/n)");
-		userChoice = scnr.next();
+		int primeArray = Validator.getInt(scnr,
+				"How many numbers would you like to search?(Let's keep it under 10000 ok? Don't get greedy): ", 2,
+				10000);
 
-	}while (userChoice.equalsIgnoreCase("y"));
-		
+		primeNums.addAll(PrimeNums.getPrimes(primeArray));
+		int arrayLength = primeNums.size();
+
+		do {
+			int userPrime = Validator.getInt(scnr, "Enter the number you'd like to see: ", 1, arrayLength);
+			int temp = primeNums.get(userPrime);
+			System.out.println("The number " + userPrime + " prime is " + temp + "\n");
+			System.out.println("Would you lke to find another prime number? (y/n)");
+			userChoice = scnr.next();
+
+		} while (userChoice.equalsIgnoreCase("y"));
+
 		System.out.println("Ok then...Thanks for coming...Don't be a stranger!.....please?!....");
 	}
 }
